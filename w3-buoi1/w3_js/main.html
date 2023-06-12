@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bài tập w3</title>
+</head>
+<body>
+<div id="demo"></div>
+<div id="demo1"></div>
+
+<button type="button" onclick="my_function">try my</button>
+<button type="button" onclick="document.write(5+6)" >intro</button>
+<div id="demo2"></div>
+<div id="demo3"></div>
+<div id="demo4"></div>
+    
+</body>
+<script>
+    document.getElementById("demo").innerHTML="Hello JavaScript";
+    document.getElementById("demo").style.fontSize="35px";
+    document.getElementById("demo").style.display="none";
+    document.getElementById("demo").style.display="block";
+    document.getElementById( "demo").innerHTML="My First JavaScript";
+
+    function my_function(){
+        document.getElementById("demo1").innerHTML="Paragraph changed.";
+    }
+    document.getElementById("demo").innerHTML=5+6;
+    document.write("5+6");
+    window.alert(5+6);
+    alert(5+7);
+    console.log(5+8);
+
+    let x,y,z;
+    x=5;y=6;z=x+y;
+    document.getElementById("demo2").innerHTML=z
+    
+    const price1=5;
+    const price2=6;
+    let total=price1+price2;
+       let a=5;
+       {
+        let a=6;
+       }
+     window.write(a);
+
+     const car = {type:"Fiat", model:"500", color:"white"};
+     car.color="red";
+     document.getElementById("demo1").innerHTML=car.color;
+     let innot=price1<price2;
+     console.log(innot);
+
+
+     let c=5+5;
+     let b=5+"5";
+     let q="hello"+5;
+      console.log(c);//10
+      console.log(b);//55
+      console.log(q);//hello5
+
+      let t=6;
+      t++;
+      console.log(t);//7
+      t**2;
+      console.log(t);
+      console.log(Math.pow(x,2));
+      y+=5;
+      console.log(y);
+      const date = new Date("2022-03-25");
+      let p = 16 + 4 + "Volvo";
+      console.log(p);
+
+      let r=123e5;//12300000;
+      console.log(r);
+      
+//typeof
+      document.getElementById("demo3").innerHTML = 
+"'John' is " + typeof "John" + "<br>" +
+"3.14 is " + typeof 3.14 + "<br>" +
+"NaN is " + typeof NaN + "<br>" +
+"false is " + typeof false + "<br>" +
+"[1, 2, 3, 4] is " + typeof [1, 2, 3, 4] + "<br>" +
+"{name:'John', age:34} is " + typeof {name:'John', age:34} + "<br>" +
+"new Date() is " + typeof new Date() + "<br>" +
+"function () {} is " + typeof function () {} + "<br>" +
+"myCar is " + typeof myCar + "<br>" +
+"null is " + typeof null;
+      
+     const fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo4").innerHTML = isArray(fruits);
+
+function isArray(myArray) {
+  return myArray.constructor === Array;
+}
+
+</script>
+</html>
