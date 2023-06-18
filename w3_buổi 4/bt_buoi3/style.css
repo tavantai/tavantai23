@@ -1,0 +1,20 @@
+body{
+  width: 100%;
+}
+li{
+  list-style: none;
+}
+.ho_menu{
+  max-width: 1200px;
+ margin: auto !important;
+ background: #c1c0b7;
+}
+.ip{
+  margin:5px auto !important;
+
+}
+
+#menu1{
+  padding: auto;;
+}
+
