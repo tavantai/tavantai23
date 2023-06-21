@@ -4,17 +4,34 @@ body{
 li{
   list-style: none;
 }
+.back_background{
+  width: 100%;
+  height: 100%;
+}
+.ho_menu:hover{
+  background: #c1c0b7;
+}
 .ho_menu{
   max-width: 1200px;
  margin: auto !important;
- background: #c1c0b7;
+}
+i{
+  background: white;
 }
 .ip{
   margin:5px auto !important;
-
 }
 
 #menu1{
   padding: auto;;
+}
+button{
+  height: 30px;
+  margin:  5px auto !important;
+  
+}
+.disphaly{
+  display: flex;
+  justify-content: flex-end ;
 }
 
