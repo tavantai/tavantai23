@@ -54,7 +54,7 @@ p.title {
     padding: 0;
 }
 #NavBar .img {
-    width: 120px;
+    width: 30px;
     margin-right: 40px;
 }
 
@@ -81,8 +81,9 @@ p.title {
     display: block;
     outline: none;
     border: none;
-    width: 40%;
+    width: 650px;
     padding: 10px;
+    
 }
 .overlay h3 {
     font-size: 17px;

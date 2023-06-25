@@ -145,18 +145,22 @@ header.innerHTML = `
        <img src="https://api.gbif.org/v1/image/unsafe/1500x750/http:%2F%2Fimages.ctfassets.net%2Fuo17ejk9rkwj%2FDwhektwBvXdBaayDUUm2D%2F2b362f6116c7781c2355ed61a4a0499c%2Fvaticano.jpg" class="card-img" alt="..."> 
         <div class="card-img-overlay">
             <nav id="NavBar">
-                <img class="img" src="https://www.gbif.org/img/full_logo_white.svg" alt="">
+                <svg viewBox="90 239.1 539.7 523.9"class="img" xmlns="http://www.w3.org/2000/svg">
+            <path class="gbif-logo-svg" d="M325.5,495.4c0-89.7,43.8-167.4,174.2-167.4C499.6,417.9,440.5,495.4,325.5,495.4"fill="white"></path>
+            <path class="gbif-logo-svg" d="M534.3,731c24.4,0,43.2-3.5,62.4-10.5c0-71-42.4-121.8-117.2-158.4c-57.2-28.7-127.7-43.6-192.1-43.6
+c28.2-84.6,7.6-189.7-19.7-247.4c-30.3,60.4-49.2,164-20.1,248.3c-57.1,4.2-102.4,29.1-121.6,61.9c-1.4,2.5-4.4,7.8-2.6,8.8
+c1.4,0.7,3.6-1.5,4.9-2.7c20.6-19.1,47.9-28.4,74.2-28.4c60.7,0,103.4,50.3,133.7,80.5C401.3,704.3,464.8,731.2,534.3,731"fill="white"></path>
+        </svg>
                 <div class = 'header_Center'></div>
             </nav>
             <div class="group"></div>
             <div class="overlay">
-
                 <h3>GBIF | Global Biodiversity Information Facility</h3>
                 <h1>Free and open access to biodiversity data</h1>
                 <div class="list_search_Top">
                     <a href="">Occurrences</a>
                     <a href="">Species</a>
-                    <a href="">Datasets</a>
+                    <a href="">Datasets</a> 
                     <a href="">Publishers</a>
                     <a href="">Resources</a>
                 </div>
@@ -169,46 +173,44 @@ header.innerHTML = `
             </div>
         </div>
     </div>`;
-const NavBar = document.querySelector("#NavBar");
-const header_Center = document.querySelector(".header_Center");
-const group = document.querySelector(".group");
-menus.forEach((menu, index) => {
-  header_Center.innerHTML += `<p class ="List" onclick = "show(${index})">${menu.name}</p>`;
-});
+  const NavBar = document.querySelector("#NavBar");
+  const header_Center = document.querySelector(".header_Center");
+  const group = document.querySelector(".group");
+  menus.forEach((menu, index) => {
+    header_Center.innerHTML += `<p class ="List" onclick = "show(${index})">${menu.name}</p>`;
+  });
 
-function show(x) {
-  const List = document.querySelectorAll('.List')
-  List.forEach(item => {
-    item.style.removeProperty("background-color")
-  })
-  List[x].style.backgroundColor = "#61a861"
-  let txt = "";
-  menus[x].childrent.forEach((child) => {
-    txt += `
-        <div class = "list_gr">
-            <p class="title">${child.title}</p>
-            <div class ="list_Item">`;
-    child.option.forEach((op) => {
+  function show(x) {
+    const List = document.querySelectorAll('.List')
+    List.forEach(item => {
+      item.style.removeProperty("background-color")
+    })
+    List[x].style.backgroundColor = "#61a861"
+    let txt = "";
+    menus[x].childrent.forEach((child) => {
       txt += `
-                <a class ="item" href="">${op}</a>
-            `;
+          <div class = "list_gr">
+              <p class="title">${child.title}</p>
+              <div class ="list_Item">`;
+      child.option.forEach((op) => {
+        txt += `
+                  <a class ="item" href="">${op}</a>
+              `;
+      });
+      txt += "</div></div>";
     });
-    txt += "</div></div>";
-  });
-  let margin = 100 * x + 80 + "px";
-  group.innerHTML = txt;
-  group.style.marginLeft = margin;
-  group.style.display = "flex";
-}
-function clickOver() {
-  document.addEventListener("click", function (e) {
-    // Kiểm tra xem sự kiện click có xảy ra bên ngoài của toast hay không
-    if (e.target.classList != "List") {
-      // Nếu click xảy ra bên ngoài, ẩn đi toast
-      group.style.display = "none";
-    }
-  });
-}
+    let margin = 95 * x + 62 + "px";
+    group.innerHTML = txt;
+    group.style.marginLeft = margin;
+    group.style.display = "flex";
+  }
+  function clickOver() {
+    document.addEventListener("click", function (e) {
+      if (e.target.classList != "List") {
+        group.style.display = "none";
+      }
+    });
+  }
 clickOver();
 console.log(NavBar);
 const list_Icon = [
@@ -375,33 +377,21 @@ function checkValueSign() {
   }
   
 }
-function checkValueNext() {
-  const next = document.querySelector('.next')
-  console.log(next)
-  next.onclick = () => {
-    const location = document.querySelector('.location #username').value
-    const email = document.querySelector('.email #username').value
-    const user = document.querySelector('.user #password').value
-    const password = document.querySelector('.password #password').value
-    if(email==='' || password ===''|| user==='' || location ==='') {
-      alert('ban chua nhap email')
-    }
-  }
-}
+
 
 function random_img() {
   const img = [
-    "https://images2.minutemediacdn.com/image/fetch/w_2000,h_2000,c_fit/https://paininthearsenal.com/wp-content/uploads/getty-images/2017/07/1141847104.jpeg",
-    "https://transfery.info/img/photos/80967/1500xauto/hakim-ziyech.jpg",
-    "https://i.guim.co.uk/img/media/1b8e6e0f5ad822a7fa2d4d9854f8c9e546e67d4b/0_148_5342_3206/master/5342.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=9b2e53fab9c1bc7120d674590e69e56b",
-    "https://www.planetsport.com/image-library/og/1600/h/hakim-ziyech-chelsea-26-oct-2021.jpg",
-    "https://www.foot01.com/img/images/1200x/2023/Jan/31/hakim-ziyech-passe-sa-visite-medicale-avec-le-psg-icon_sipausa_43720585-356447.jpg",
-    "https://cdn.modernghana.com/images/content/1022202060530-8eu2xkjwvr-hakim-ziyech-201017-inaction-g-1050.jpg"
+    "https://kenh14cdn.com/thumb_w/660/2020/7/17/brvn-15950048783381206275371.jpg",
+    "https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg",
+    "https://vtv1.mediacdn.vn/thumb_w/640/2018/11/29/photo-1-154348431990377584420.jpg",
+    "https://cdn.baogiaothong.vn/upload/2-2022/images/2022-05-25/1653446036-488-thumbnail-width740height555.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlkQ3u8dJ7RrADrQtMzY0929b8Qc6m3--Tfw&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvXNQpMPrxb_Nj6Z_JACQK7l5kzyGdwjQjug&usqp=CAU"
   ]
    setInterval(function(){
     const random = Math.floor(Math.random()*6)
     document.querySelector('.header .card.text-bg-dark .card-img').src = `${img[random]}`
-  },2000)
+  },3000)
 
 }
 random_img()
