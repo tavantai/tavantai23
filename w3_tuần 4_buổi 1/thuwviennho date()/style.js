@@ -24,7 +24,7 @@ class FullYear {
   fn_Month(){
     document.write("Tháng này là Tháng:"+Number(this.a.getMonth()+1))
   }
-  fn_FullYear(){
+  fn_FullYear(){  
     document.write("Năm này là năm :"+this.a.getFullYear());
   }
  fn_full(){
@@ -43,7 +43,36 @@ class FullYear {
   document.write(b)
  }
 
+ fn_congngay(){
+  this.a.setDate(this.a.getDate() + this.n);
+ this.fn_full();
+ }
+ fn_trungay(){
+  this.a.setDate(this.a.getDate() - this.n);
+ this.fn_full();
+ }
+ fn_congthang(){
+  this.a.setMonth(this.a.getMonth() + this.t);
+  this.fn_full();
+ }
+ fn_truthang(){
+  this.a.setMonth(this.a.getMonth() - this.t);
+  this.fn_full();
+ }
+ fn_congnam(){
+  this.a.setFullYear(this.a.getFullYear() + this.m);
+  this.fn_full();
+ }
+ fn_trunam(){
+  this.a.setFullYear(this.a.getFullYear() - this.m);
+  this.fn_full();
+ }
+
 }
-const Hours=new FullYear();
-Hours.fn_full();
+const Hours=new FullYear(50,8,2010);
+
+Hours.fn_congnam();
+
+
+
 
