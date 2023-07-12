@@ -4,10 +4,11 @@ function loaddoc(){
     const html = new XMLHttpRequest();
    html.onload=function(){
     if(this.readyState == 4 && this.status == 200){
-        document.getElementById("demo").innerHTML = this.responseText;
+        let a =JSON.parse(html.responseText);
+        console.log(a);      
     }
    }
-   html.open("Get","https://jsonplaceholder.typicode.com/todos/")
+   html.open("Get","https://api.chucknorris.io/jokes/random")
    html.send(); 
 
 }
