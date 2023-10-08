@@ -4,7 +4,7 @@ import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 
 export default function Header() {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
@@ -20,6 +20,12 @@ export default function Header() {
     setPasswordError("");
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   const handleSubmit = useCallback(() => {
     if (username === "") {
       setUsernameError("Vui lòng nhập tên đăng nhập.");
@@ -30,16 +36,15 @@ export default function Header() {
     if (username !== "" && password !== "") {
       axios.post("https://wlp.howizbiz.com/api/web-authenticate", { username, password })
         .then(response => {
-          const token= response.data.access_token;
-          localStorage.setItem("token",token)
-           return navigate('/user'); 
+          const token = response.data.access_token;
+          localStorage.setItem("token", token)
+          return navigate('/user');
         })
         .catch(error => {
-          alert("tài khoản không tồn tại")
-
+          alert("Tài khoản không tồn tại");
         });
     }
-  })
+  });
 
   return (
     <>
@@ -63,7 +68,7 @@ export default function Header() {
             </div>
             <div className={`login_input ${passwordError ? 'error' : ''}`}>
               <i className="fa-solid fa-lock" style={{ opacity: "0.2" }}></i>
-              <input type="password" placeholder="Mật khẩu" value={password} onChange={handlePasswordChange} />
+              <input type="password" placeholder="Mật khẩu" value={password} onChange={handlePasswordChange} onKeyPress={handleKeyPress} />
               <p>{passwordError && <span className="error-message">{passwordError}</span>}</p>
             </div>
             <button onClick={handleSubmit}> Đăng nhập </button>

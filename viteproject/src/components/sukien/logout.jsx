@@ -11,14 +11,14 @@ export default function Tblogout() {
     const handleShow = () => setShow(true);
     const naviget= useNavigate();
     const handUser = () => {
-          localStorage.clear();
-        naviget("/login")
+         localStorage.clear();
+        naviget("")
     }
     const userMe = localStorage.getItem("userMe");
     const json_userme = JSON.parse(userMe);
     return (
         <>
-              <h4 style={{ color: '#414141' }}onClick={handleShow}><b>{json_userme?.name.slice(0, 1)}</b>{json_userme && json_userme.username}</h4>
+              <h4 style={{ color: '#414141' }}onClick={handleShow}><b>{json_userme?.name.slice(0, 1)}</b><span>{json_userme && json_userme.username}</span></h4>
                <Modal
                 show={show}
                 onHide={handleClose}

@@ -43,11 +43,13 @@ export default function User() {
         setsearch(searchText);
 
     }
- let start = (page - 1) * perpage + 1;
-  let end = page * perpage;
-  if (end >=pagination.total) {
-    end =pagination.total;
-  }
+
+
+    let start = (page - 1) * perpage + 1;
+    let end = page * perpage;
+    if (end >= pagination.total) {
+        end = pagination.total;
+    }
 
     useEffect(() => {
         ME();
@@ -61,11 +63,11 @@ export default function User() {
                         alt="" />
                 </div>
                 <div className="col-8 ul ">
-                    <h5 className="">
+                    <h5 className="ul_1">
                         HỆ THỐNG BÁO CÁO VỀ HIỆN TRẠNG LOÀI NGUY CẤP, QUÝ, HIẾM ĐƯỢC ƯU TIÊN BẢO VỆ
                     </h5>
                 </div>
-                <div className="col-3 row">
+                <div className="col-3 row logout_600">
                     <Tblogout />
                 </div>
             </div>
@@ -85,13 +87,13 @@ export default function User() {
                 <div className="main_user_right  col-10 "> <span><i className="fa-solid fa-user-secret"></i> Loài nguy cấp quý hiếm</span>
                     <div className="row  main_user_Search justify-content-between">
                         <div className="col-7 positioninput">
-                        <i className="fa-solid fa-magnifying-glass"></i>
+                            <i className="fa-solid fa-magnifying-glass"></i>
                             <input
-                            type="text"
-                            placeholder=" tìm kiếm theo tên hoặc số điện thoại"
-                            onChange={(e) => handelsearch(e)}/>
+                                type="text"
+                                placeholder=" tìm kiếm theo tên hoặc số điện thoại"
+                                onChange={(e) => handelsearch(e)} />
                         </div>
-                        <Link to="/adduser" className="col-2" style={{ background: "red", textAlign: "center", color: "white", borderRadius: "10px", textDecoration: "none" }}>✚  Thêm mới</Link>
+                        <Link to="/adduser" className="col-2" style={{ background: "red", textAlign: "center", color: "white", borderRadius: "10px", textDecoration: "none", padding: "auto" }}>✚ Thêm mới</Link>
                     </div>
                     <div className=" dulieu_api">
                         <table>
@@ -107,12 +109,12 @@ export default function User() {
                                     <th style={{width:"15%"}}>Tên</th>
                                     <th style={{width:"15%"}}>Tên khoa học</th>
                                     <th style={{width:"10%"}}>Giới</th>
-                                    <th style={{width:"10%"}}>Ngành</th>
-                                    <th style={{width:"10%"}}>Lớp</th>
-                                    <th style={{width:"10%"}}>Bộ</th>
+                                    <th style={{width:"15%"}}>Ngành</th>
+                                    <th style={{width:"5%"}}>Lớp</th>
+                                    <th style={{width:"5%"}}>Bộ</th>
                                     <th style={{width:"10%"}}>Họ</th>
-                                    <th style={{width:"10%"}}>Chi</th>
-                                    <th style={{width:"10%"}}>Hành động</th>
+                                    <th style={{width:"15%"}}>Chi</th>
+                                    <th style={{width:"15%"}}>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -128,12 +130,15 @@ export default function User() {
                         </div>
                         <div>
                             <Stack spacing={1}>
+                                
                                 <Pagination
                                     count={Math.ceil(pagination.total / perpage || 1)}
                                     color="primary"
                                     onChange={(event, value) => {
                                         setpage(value);
-                                    }}
+                                        
+                                    }}   
+                                    defaultPage={6} siblingCount={0} boundaryCount={1}                   
                                 />
                             </Stack>
                         </div>

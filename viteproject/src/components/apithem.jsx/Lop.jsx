@@ -20,8 +20,9 @@ export function Lop({ datalop }) {
         <>
             {lop.map((getitem) => (
                 <React.Fragment key={getitem.uuid}>
-                    <option value={getitem.uuid}>{getitem.ten}-{getitem.ten_khoa_hoc}</option>
-                </React.Fragment>
+                    <option value={getitem.uuid}>
+                        {getitem.ten && getitem.ten_khoa_hoc ? `${getitem.ten} - ${getitem.ten_khoa_hoc}` : getitem.ten || getitem.ten_khoa_hoc}
+                    </option>                </React.Fragment>
             ))}
 
         </>

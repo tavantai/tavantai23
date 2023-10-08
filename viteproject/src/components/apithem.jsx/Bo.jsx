@@ -15,13 +15,17 @@ export function Bo({ databo }) {
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+    }, [databo]);
     return (
         <>
             {bo.map((getitem) => (
+                
                 <React.Fragment key={getitem.uuid}>
-                    <option value={getitem.uuid}>{getitem.ten}-{getitem.ten_khoa_hoc}</option>
-                </React.Fragment>
+                    
+                    <option value={getitem.uuid}>
+                        {getitem.ten && getitem.ten_khoa_hoc ? `${getitem.ten} - ${getitem.ten_khoa_hoc}` : getitem.ten || getitem.ten_khoa_hoc}
+                    </option>             
+                   </React.Fragment>
             ))}
 
         </>

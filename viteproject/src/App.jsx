@@ -3,6 +3,7 @@ import Header from './components/loggin/header'
 import { Routes, Route } from 'react-router-dom';
 import User from './components/user/user';
 import Adduser from './components/sukien/Adduser';
+import Update from './components/sukien/update';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
   return (
     <>
     <Routes>
-    <Route path='/' element={
+    <Route path='' element={
         <>
            <Header></Header>
         </>} 
@@ -20,6 +21,8 @@ function App() {
         <User />} />
         <Route path='adduser' element={
         <Adduser />} /> 
+        <Route path='update' element={
+        <Update />} />
     </Routes>
       
     </>

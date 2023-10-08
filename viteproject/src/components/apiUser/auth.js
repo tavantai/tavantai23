@@ -2,6 +2,7 @@ import { instence } from "./axios";
 import queryString from "query-string";
 
 const token_login = localStorage.getItem("token")
+
 export const add_user = (data, class_id, family_id, genus_id,kingdom_id,order_id,phylum_id,sach_dos,iucns ) => {
   const newuser = {
     toa_dos:[],
@@ -33,21 +34,31 @@ export const deleteUser = (id) => {
 }
 
 
-export const UpdateUser = (id, data, role_ids, group_id) => {
+export const UpdateUser = (id,data, class_id,family_id, genus_id,kingdom_id,order_id,phylum_id,sach_dos,iucns ) => {
   const updata = {
-    email: data.email,
-    username: data.username,
-    name: data.name,
-    mobile: data.mobile,
-    id: id,
-    role_ids: role_ids,
-    group_id: group_id,
+    id:id,
+    toa_dos:[],
+    ten_khoa_hoc: data.ten_khoa_hoc,
+    ten_tac_gia: data.ten_tac_gia,
+    ten_dia_phuong: data.ten_dia_phuong,
+    ten: data.ten,
+    nguon_du_lieu: data.nguon_du_lieu,
+    class_id:class_id,
+    family_id:family_id,
+    genus_id:genus_id,
+    kingdom_id:kingdom_id,
+    order_id:order_id,
+    phylum_id:phylum_id,
+    sach_dos:sach_dos,
+    iucns:iucns,
   }
   instence.update('/species', updata, { headers: { Authorization: `Bearer ${token_login}` } })
     .then(response => response.data)
     .catch(err => { return err })
 
 }
+
+
 
 
 export const Apilits = async (page, search, perpage) => {

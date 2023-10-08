@@ -1,8 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Apilits, add_user, deleteUser } from "../apiUser/auth";
-// import { Apilits, UpdateUser, add_user, deleteUser } from "../../apiuSer/auth";
-
-
+import { Apilits, UpdateUser, add_user, deleteUser } from "../apiUser/auth";
 
  export const newuser = createAsyncThunk('/user/createUser',async({data, class_id, family_id, genus_id,kingdom_id,order_id,phylum_id,sach_dos,iucns 
  })=>{
@@ -38,7 +35,7 @@ import { Apilits, add_user, deleteUser } from "../apiUser/auth";
 
  export const deleteUserAction = createAsyncThunk('user/deleteUser', async ({ id }) => {
 	try {
-		const response = deleteUser(id);
+		const response = await deleteUser(id);
 		return response;
 	} catch (error) {
 		return error;
@@ -53,8 +50,9 @@ export const deleteUserReduces = (builder) => {
 		})
 		.addCase(deleteUserAction.fulfilled, (state, action) => {
 			state.loading = false;
-			state.data = action.payload;
-			state.error = null;
+			const deletedUserId = action.meta.arg.id;
+			state.data = state.data.filter((user) => user.id !== deletedUserId);
+			state.error = null;		
 		})
 		.addCase(deleteUserAction.rejected, (state, action) => {
 			state.loading = false;
@@ -63,15 +61,9 @@ export const deleteUserReduces = (builder) => {
 }
 
 
-
-
-
-
-
-
-export const UpdateUserAction = createAsyncThunk('user/updateUser', async ({ id, data, role_ids,group_id }) => {
+export const UpdateUserAction = createAsyncThunk('user/updateUser', async ({id,data, class_id,family_id, genus_id,kingdom_id,order_id,phylum_id,sach_dos,iucns }) => {
 	try {
-		const response = UpdateUser(id, data, role_ids,group_id);
+		const response = UpdateUser(id,data, class_id,family_id, genus_id,kingdom_id,order_id,phylum_id,sach_dos,iucns);
 		return response;
 	} catch (error) {
 		alert("Cập Nhật Dữ liệu Người Dùng không thành công . Vui lòng kiểm tra lại");

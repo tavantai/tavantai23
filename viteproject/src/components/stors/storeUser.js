@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createUserReducer, deleteUserReduces, getUserReduces} from "./action";
+import { createUserReducer, deleteUserReduces, getUserReduces, updateUserReduces} from "./action";
 
 
 export const User_trangThai =  createSlice({
@@ -14,7 +14,7 @@ export const User_trangThai =  createSlice({
         getUserReduces(builder);
         createUserReducer(builder);
         deleteUserReduces(builder);
-		// updateUserReduces(builder)
+		updateUserReduces(builder);
     }
 })
 

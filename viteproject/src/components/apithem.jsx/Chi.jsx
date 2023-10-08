@@ -15,13 +15,15 @@ export function Chi({ dataChi }) {
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+    }, [dataChi]);
     return (
         <>
-            {chi.map((getitem,index) => (
+            {chi.map((getitem, index) => (
                 <React.Fragment key={index}>
-                    <option value={getitem.uuid}>{getitem.ten}-{getitem.ten_khoa_hoc}</option>
-                </React.Fragment>
+                    <option value={getitem.uuid}>
+                        {getitem.ten && getitem.ten_khoa_hoc ? `${getitem.ten} - ${getitem.ten_khoa_hoc}` : getitem.ten || getitem.ten_khoa_hoc}
+                    </option>              
+                  </React.Fragment>
             ))}
 
         </>

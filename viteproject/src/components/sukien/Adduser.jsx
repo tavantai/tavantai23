@@ -12,10 +12,10 @@ import { Chi } from "../apithem.jsx/Chi";
 import { Bo } from "../apithem.jsx/Bo";
 import { Link, useNavigate } from "react-router-dom";
 import "./sukien.scss"
-import validate from "./validate";
 import { REDBOOK } from "../apithem.jsx/REDBOOK";
 import { IUCN } from "../apithem.jsx/IUCN";
 import { ListNam } from "../apithem.jsx/nam";
+import Tblogout from "./logout";
 
 export default function Adduser() {
     const navigate = useNavigate();
@@ -35,17 +35,10 @@ export default function Adduser() {
     const [valuebo, setvaluebo] = useState()
     const [valueho, setvalueho] = useState()
     const [valuechi, setvaluechi] = useState()
-    const[valuenam,setvaluenam]=useState()
-const[ valuetrangthai,setvaluetrangthai]=useState()
-const[valuenam1,setvaluenam1]=useState()
-const[valuetrangthai1,setvaluetrangthai1]=useState()
-    //    const valSachdoChange = () => {
-    //     const arr = [];
-    //     arr.push({
-    //         name: val,
-    //         id: val
-    //     })
-    //    }
+    const [valuenam, setvaluenam] = useState()
+    const [valuetrangthai, setvaluetrangthai] = useState()
+    const [valuenam1, setvaluenam1] = useState()
+    const [valuetrangthai1, setvaluetrangthai1] = useState()
     const handvalue = (event) => {
         let { name, value } = event.target;
         setDataCreateUser({ ...DataCreateUser, [name]: value });
@@ -75,37 +68,69 @@ const[valuetrangthai1,setvaluetrangthai1]=useState()
         const event_nameber5 = parseFloat(event.target.value)
         setvaluechi(event_nameber5)
     }
-const sachdo=[]
-  sachdo.push({"nam":valuenam,"id":valuetrangthai})
-const unl= []
-  unl.push({"nam":valuenam1,"id":valuetrangthai1})
+    const sachdo = []
+    sachdo.push({ "nam": valuenam, "id": valuetrangthai })
+    const unl = []
+    unl.push({ "nam": valuenam1, "id": valuetrangthai1 })
+
     const handUser = () => {
-        dispatch(newuser({ data: DataCreateUser, class_id: valuelop, family_id: valueho, genus_id: valuechi, kingdom_id: valuegioi, order_id: valuebo, phylum_id: valuenganh,sach_dos:sachdo,iucns:unl }))
-            alert("Thành công");
-            navigate("/user");
+         alert("Thành công");
+        navigate("/user");
+        dispatch(newuser({ data: DataCreateUser, class_id: valuelop, family_id: valueho, genus_id: valuechi, kingdom_id: valuegioi, order_id: valuebo, phylum_id: valuenganh, sach_dos: sachdo, iucns: unl }))
+             .then(() => {
+                dispatch(getUserAction({ page: pagination.page, search: "", perpage: pagination.perpage }));          
+            })    
     }
-    const hendvaluenam=(event)=>{
+        
+    const hendvaluenam = (event) => {
         const event_nameber6 = parseFloat(event.target.value)
-        setvaluenam(event_nameber6) 
+        setvaluenam(event_nameber6)
     }
 
-    const hendtrangthai =(event)=>{
+    const hendtrangthai = (event) => {
         const event_nameber7 = parseFloat(event.target.value)
-        setvaluetrangthai(event_nameber7) 
+        setvaluetrangthai(event_nameber7)
     }
-    const hendvaluenam1=(event)=>{
+    const hendvaluenam1 = (event) => {
         const event_nameber8 = parseFloat(event.target.value)
-        setvaluenam1(event_nameber8) 
+        setvaluenam1(event_nameber8)
     }
-    const hendtrangthai1 =(event)=>{
+    const hendtrangthai1 = (event) => {
         const event_nameber9 = parseFloat(event.target.value)
-        setvaluetrangthai1(event_nameber9) 
+        setvaluetrangthai1(event_nameber9)
     }
     return (
         < >
-            <div className="add">
+            <div className="user row ">
+                <div className="col-1">
+                    <img src="http://wlp.howizbiz.com/static/img/logoColor.e5de23ce.png"
+                        alt="" />
+                </div>
+                <div className="col-8 ul ">
+                    <h5 className="">
+                        HỆ THỐNG BÁO CÁO VỀ HIỆN TRẠNG LOÀI NGUY CẤP, QUÝ, HIẾM ĐƯỢC ƯU TIÊN BẢO VỆ
+                    </h5>
+                </div>
+                <div className="col-3 row">
+                    <Tblogout />
+                </div>
+            </div>
+            <div className="usermain row ">
+                <div className="main_user_letf col-2 row" >
+                    <ul>
+                        <li><button><i className="fa-solid fa-house-laptop"></i>Bảng điều khiển</button></li>
+                        <li><button><i className="fa-solid fa-user"></i>quản lý người dùng</button></li>
+                        <li><button><i className="fa-solid fa-layer-group"></i>Phân loại học</button></li>
+                        <li><button><i className="fa-solid fa-face-smile"></i>Loài nguy cấp quý hiếm</button></li>
+                        <li><button><i className="fa-solid fa-pen"></i>Bài viết<table></table></button></li>
+                        <li><button><i className="fa-solid fa-book"></i>Phiếu đều xuất</button></li>
+                    </ul>
+                </div>
+            
+            <div className="add col-10">
+              <div style={{margin:"0 60px"}} >
                 <h2>
-                    <Link to="/user" style={{textDecoration:"none"}}>⇐</Link> THÔNG TIN VỀ HIỆN TRẠNG LOÀI NGUY CẤP, QUÝ, HIẾM CẦN ĐƯỢC ƯU TIÊN BẢO VỆ
+                    <Link to="/user" style={{ textDecoration: "none",color:'red' }}>⇐</Link> THÔNG TIN VỀ HIỆN TRẠNG LOÀI NGUY CẤP, QUÝ, HIẾM CẦN ĐƯỢC ƯU TIÊN BẢO VỆ
                 </h2>
                 <h4>I. Thông tin chung về loài</h4>
                 <Form style={{ width: '50%' }}>
@@ -114,7 +139,7 @@ const unl= []
                             className="fa-solid fa-star"
                             style={{ color: "#f03c00", marginLeft: "5px" }}
                         ></i></Form.Label>
-                        <Form.Control type="text" placeholder="Tên" name="ten" onChange={handvalue} />
+                        <Form.Control type="text" placeholder="Tên" name="ten" onChange={handvalue}  />
                     </Form.Group>
                 </Form>
                 <Row className="g-2" style={{ width: '50%' }}>
@@ -155,6 +180,7 @@ const unl= []
                             style={{ color: "#f03c00", marginLeft: "10px" }}
                         ></i>
                         <Form.Select aria-label="Default select example" onChange={handvaluegioi} >
+                        <option value={0}></option> 
                             <Gioi datagioi={datagioi} />
                         </Form.Select>
                     </Col>
@@ -165,6 +191,7 @@ const unl= []
                             style={{ color: "#f03c00", marginLeft: "10px" }}
                         ></i>
                         <Form.Select aria-label="Default select example" onChange={handvaluenganh}>
+                        <option value={0}></option>
                             <Nganh datanganh={datanganh} />
                         </Form.Select>
                     </Col>
@@ -175,7 +202,8 @@ const unl= []
                             style={{ color: "#f03c00", marginLeft: "10px" }}
                         ></i>
                         <Form.Select aria-label="Default select example" onChange={handvaluelop}>
-                            <Lop datalop={datalop} />
+                        <option value={0}></option>
+                           <Lop datalop={datalop} />
                         </Form.Select>
                     </Col>
                 </Row>
@@ -187,6 +215,7 @@ const unl= []
                             style={{ color: "#f03c00", marginLeft: "10px" }}
                         ></i>
                         <Form.Select aria-label="Default select example" onChange={handvaluebo}>
+                        <option value={0}></option>
                             <Bo databo={databo} />
                         </Form.Select>
                     </Col>
@@ -197,6 +226,7 @@ const unl= []
                             style={{ color: "#f03c00", marginLeft: "10px" }}
                         ></i>
                         <Form.Select aria-label="Default select example" onChange={handvalueho}>
+                        <option value={0}></option>
                             <Ho dataho={dataho} />
                         </Form.Select>
                     </Col>
@@ -207,6 +237,7 @@ const unl= []
                             style={{ color: "#f03c00", marginLeft: "10px" }}
                         ></i>
                         <Form.Select aria-label="Default select example" onChange={handvaluechi}>
+                        <option value={0}></option>
                             <Chi datachi={datachi} />
                         </Form.Select>
                     </Col>
@@ -216,14 +247,16 @@ const unl= []
                 <Row className="g-2">
                     <Col md className="m-3">
                         <span>năm</span>
-                        <Form.Select aria-label="Default select example"onChange={hendvaluenam}>
+                        <Form.Select aria-label="Default select example" onChange={hendvaluenam}>
+                        <option value={0}></option>
                             <ListNam />
                         </Form.Select>
                     </Col>
                     <Col md className="m-3">
                         <span>hiện trạng</span>
                         <Form.Select aria-label="Default select example" onChange={hendtrangthai}>
-                            <REDBOOK/>
+                        <option value={0}></option>
+                            <REDBOOK />
                         </Form.Select>
 
                     </Col>
@@ -233,12 +266,14 @@ const unl= []
                     <Col md className="m-3">
                         <span>năm</span>
                         <Form.Select aria-label="Default select example" onChange={hendvaluenam1}>
+                        <option value={0}></option>
                             <ListNam />
                         </Form.Select>
                     </Col>
                     <Col md className="m-3">
                         <span>hiện trạng</span>
-                        <Form.Select aria-label="Default select example"onChange={hendtrangthai1}>
+                        <Form.Select aria-label="Default select example" onChange={hendtrangthai1}>
+                        <option value={0}></option>
                             <IUCN />
                         </Form.Select>
                     </Col>
@@ -247,8 +282,10 @@ const unl= []
                     background: "red", color: "aliceblue", width: "120px",
                     height: "40px",
                     border: "2px solid red",
-                    }}>Thê mới</button>
-        </div >
+                }}>Thê mới</button>
+            </div >
+            </div>
+        </div>
         </>
     );
 }
